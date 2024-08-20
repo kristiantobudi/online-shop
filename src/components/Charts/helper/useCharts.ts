@@ -19,7 +19,7 @@ export const useDetailCharts = (id: string) => {
         } catch (error) {
             console.error(error)
         }
-    }, [id])
+    }, [])
 
     useEffect(() => {
         fetchData()

@@ -1,4 +1,5 @@
 export type AuthType = {
+  data: any;
   username?: string;
   firstName?: string;
   lastName?: string;
