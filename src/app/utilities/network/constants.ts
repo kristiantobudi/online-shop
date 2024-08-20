@@ -1,1 +1,2 @@
-export const ProductEndpoint = '/products';
+export const ProductEndpoint = '/product';
+export const TransactionEndpoint = '/transactions';

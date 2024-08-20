@@ -1,8 +1,7 @@
-"use client";
-
 import { ApexOptions } from "apexcharts";
-import React from "react";
+import React, { useContext } from "react";
 import dynamic from "next/dynamic";
+import { DetailCharts } from "./helper/useCharts";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
@@ -130,16 +129,18 @@ interface ChartOneState {
 
 const ChartOne: React.FC = () => {
   const series = [
-      {
-        name: "Product One",
-        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45],
-      },
+    {
+      name: "Product One",
+      data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45],
+    },
 
-      {
-        name: "Product Two",
-        data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
-      },
-    ]
+    {
+      name: "Product Two",
+      data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
+    },
+  ];
+
+  const { dataDetails } = useContext(DetailCharts);
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
@@ -151,7 +152,9 @@ const ChartOne: React.FC = () => {
             </span>
             <div className="w-full">
               <p className="font-semibold text-primary">Total Revenue</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
+              <p className="text-sm font-medium">
+                {dataDetails?.product_name || "No Data"}
+              </p>
             </div>
           </div>
           <div className="flex min-w-47.5">
