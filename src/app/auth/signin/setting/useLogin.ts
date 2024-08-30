@@ -18,9 +18,8 @@ export const useLogin = () => {
     const onLogin = async (data: LoginSchemaType) => {
         try {
             const response = await loginUser(data);
-            console.log(response)
-            if (response.data.data.token) {
-                await storeToken(response.data.data.token);
+            if (response.data.data.accessToken) {
+                await storeToken(response.data.data.accessToken);
             }
         } catch (error) {
             console.log(error)
@@ -28,7 +27,6 @@ export const useLogin = () => {
     }
 
     const onSubmit = () => {
-        console.log('onSubmit')
         handleSubmit(data => {
             onLogin(data)
         })();
