@@ -1,154 +1,73 @@
-import { BRAND } from "@/types/brand";
-import Image from "next/image";
 import { useContext } from "react";
 import { AirdropTables } from "./setting/hooks/useTable";
-
-// const brandData: BRAND[] = [
-//   {
-//     logo: "/images/brand/brand-01.svg",
-//     name: "Google",
-//     visitors: 3.5,
-//     revenues: "5,768",
-//     sales: 590,
-//     conversion: 4.8,
-//   },
-//   {
-//     logo: "/images/brand/brand-02.svg",
-//     name: "Twitter",
-//     visitors: 2.2,
-//     revenues: "4,635",
-//     sales: 467,
-//     conversion: 4.3,
-//   },
-//   {
-//     logo: "/images/brand/brand-03.svg",
-//     name: "Github",
-//     visitors: 2.1,
-//     revenues: "4,290",
-//     sales: 420,
-//     conversion: 3.7,
-//   },
-//   {
-//     logo: "/images/brand/brand-04.svg",
-//     name: "Vimeo",
-//     visitors: 1.5,
-//     revenues: "3,580",
-//     sales: 389,
-//     conversion: 2.5,
-//   },
-//   {
-//     logo: "/images/brand/brand-05.svg",
-//     name: "Facebook",
-//     visitors: 3.5,
-//     revenues: "6,768",
-//     sales: 390,
-//     conversion: 4.2,
-//   },
-// ];
+import { ChevronDown } from "../../../public/assets/svg/chevronDown";
+import { Info } from "../../../public/assets/svg/info";
+import { TableRow } from "./setting/components/TableRow";
 
 const TableOne = () => {
-
-  const {airdropDetails} = useContext(AirdropTables)
+  const { airdropDetails } = useContext(AirdropTables);
+  console.log(airdropDetails)
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-      <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
-        Top Channels
-      </h4>
-
-      <div className="flex flex-col">
-        <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
-          <div className="p-2.5 xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Name
-            </h5>
-          </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Price
-            </h5>
-          </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Total Supply
-            </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Sales
-            </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Conversion
-            </h5>
-          </div>
-        </div>
-
-          <div
-            className={`grid grid-cols-3 sm:grid-cols-5`}
-          >
-            <div className="flex items-center gap-3 p-2.5 xl:p-5">
-              <div className="flex-shrink-0">
-                <Image src="/images/assets/btc.png" width={48} height={48} alt={airdropDetails?.name || 'default name'} />
+      <table className="w-full">
+        <thead>
+          <tr>
+            <th className="p-2.5 xl:p-5">
+              <div className="flex items-center">
+                <b># &nbsp;</b>
+                <ChevronDown />
               </div>
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-black dark:text-white">{airdropDetails?.name}</p>
-            </div>
-            </div>
-            <div className="flex items-center justify-center p-2.5 xl:p-3">
-              <p className="text-black dark:text-white">RP. {airdropDetails?.quote?.USD?.price}</p>
-            </div>
-
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-meta-3">{airdropDetails?.total_supply}</p>
-            </div>
-
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-black dark:text-white">{airdropDetails?.max_supply}</p>
-            </div>
-
-            {/* <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-meta-5">{brand.conversion}%</p>
-            </div> */}
-          </div>
-
-        {/* {brandData.map((brand, key) => (
-          <div
-            className={`grid grid-cols-3 sm:grid-cols-5 ${
-              key === brandData.length - 1
-                ? ""
-                : "border-b border-stroke dark:border-strokedark"
-            }`}
-            key={key}
-          >
-            <div className="flex items-center gap-3 p-2.5 xl:p-5">
-              <div className="flex-shrink-0">
-                <Image src={brand.logo} alt="Brand" width={48} height={48} />
+            </th>
+            <th className="px-2.5 xl:px-5">Name</th>
+            <th className="px-2.5 xl:px-5">Price</th>
+            <th className="px-2.5 xl:px-5">24h %</th>
+            <th className="px-2.5 xl:px-5">7d %</th>
+            <th className="px-2.5 xl:px-5">
+              <div className="flex">
+                <p className="mr-2">Market Cap</p>
+                <Info />
               </div>
-              <p className="hidden text-black dark:text-white sm:block">
-                {brand.name}
-              </p>
-            </div>
-
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black dark:text-white">{brand.visitors}K</p>
-            </div>
-
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-meta-3">${brand.revenues}</p>
-            </div>
-
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-black dark:text-white">{brand.sales}</p>
-            </div>
-
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-meta-5">{brand.conversion}%</p>
-            </div>
-          </div>
-        ))} */}
-      </div>
+            </th>
+            <th className="px-2.5 xl:px-5">
+              <div className="flex">
+                <p className="mr-2">Volume(24h)</p>
+                <Info />
+              </div>
+            </th>
+            <th className="px-2.5 xl:px-5">
+              <div className="flex">
+                <p className="mr-2">Circulating Supply</p>
+                <Info />
+              </div>
+            </th>
+            <th className="px-2.5 xl:px-5">Last 7 days</th>
+          </tr>
+        </thead>
+        <tbody>
+          {airdropDetails ? (
+            <TableRow
+            starNum={airdropDetails.cmc_rank}
+            coinName={airdropDetails.name}
+            coinSymbol={airdropDetails.symbol}
+            hRate={airdropDetails.quote?.USD?.percent_change_24h}
+            dRate={airdropDetails.quote?.USD?.percent_change_7d}
+            hRateIsIncrement={(airdropDetails.quote?.USD?.percent_change_24h ?? 0) > 0}
+            dRateIsIncrement={(airdropDetails.quote?.USD?.percent_change_7d ?? 0) > 0}
+            price={airdropDetails.quote?.USD?.price}
+            marketCapValue={airdropDetails.quote?.USD?.market_cap}
+            volumeCryptoValue={airdropDetails.quote?.USD?.volume_24h}
+            volumeValue={airdropDetails.total_supply}
+            circulatingSupply={airdropDetails.circulating_supply}
+          />
+          )
+          : (
+            <tr>
+              <td colSpan={9}>No data available</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };

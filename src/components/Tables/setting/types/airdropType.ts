@@ -1,8 +1,10 @@
-export type TableType = {
+export type TableType = 
+  {
     id?: any // Unique identifier
     name?: string
     symbol?: string
     slug?: string
+    showBuy?: boolean
     cmc_rank?: number
     num_market_pairs?: number
     circulating_supply?: number

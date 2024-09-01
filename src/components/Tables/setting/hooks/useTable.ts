@@ -12,7 +12,6 @@ export const useAirdropTable = (id: string) => {
     const fetchData = useCallback(async () => {
         try {
             const response = await getListingsLatest();
-            console.log(response)
             if (response.data.data && response.data.data.length > 0) {
                 setData(response.data.data[0])
             }
