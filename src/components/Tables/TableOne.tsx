@@ -13,60 +13,62 @@ const TableOne = () => {
       <table className="w-full">
         <thead>
           <tr>
-            <th className="p-2.5 xl:p-5">
+            <th className="p-3 xl:p-5">
               <div className="flex items-center">
                 <b># &nbsp;</b>
                 <ChevronDown />
               </div>
             </th>
-            <th className="px-2.5 xl:px-5">Name</th>
-            <th className="px-2.5 xl:px-5">Price</th>
-            <th className="px-2.5 xl:px-5">24h %</th>
-            <th className="px-2.5 xl:px-5">7d %</th>
-            <th className="px-2.5 xl:px-5">
+            <th className="px-3 xl:px-5">Name</th>
+            <th className="px-3 xl:px-5">Price</th>
+            <th className="px-3 xl:px-5">24h %</th>
+            <th className="px-3 xl:px-5">7d %</th>
+            <th className="px-3 xl:px-5">
               <div className="flex">
                 <p className="mr-2">Market Cap</p>
                 <Info />
               </div>
             </th>
-            <th className="px-2.5 xl:px-5">
+            <th className="px-3 xl:px-5">
               <div className="flex">
                 <p className="mr-2">Volume(24h)</p>
                 <Info />
               </div>
             </th>
-            <th className="px-2.5 xl:px-5">
+            <th className="px-3 xl:px-5">
               <div className="flex">
                 <p className="mr-2">Circulating Supply</p>
                 <Info />
               </div>
             </th>
-            <th className="px-2.5 xl:px-5">Last 7 days</th>
+            <th className="px-3 xl:px-5">Last 7 days</th>
           </tr>
         </thead>
-        <tbody>
-          {airdropDetails ? (
-            <TableRow
-            starNum={airdropDetails.cmc_rank}
-            coinName={airdropDetails.name}
-            coinSymbol={airdropDetails.symbol}
-            hRate={airdropDetails.quote?.USD?.percent_change_24h}
-            dRate={airdropDetails.quote?.USD?.percent_change_7d}
-            hRateIsIncrement={(airdropDetails.quote?.USD?.percent_change_24h ?? 0) > 0}
-            dRateIsIncrement={(airdropDetails.quote?.USD?.percent_change_7d ?? 0) > 0}
-            price={airdropDetails.quote?.USD?.price}
-            marketCapValue={airdropDetails.quote?.USD?.market_cap}
-            volumeCryptoValue={airdropDetails.quote?.USD?.volume_24h}
-            volumeValue={airdropDetails.total_supply}
-            circulatingSupply={airdropDetails.circulating_supply}
-          />
+          {airdropDetails && Array.isArray(airdropDetails) ? (
+            airdropDetails.map((airdropDetails: any, key: number) => (
+              <TableRow 
+              key={key}
+              starNum={airdropDetails.cmc_rank}
+              coinName={airdropDetails.name}
+              coinSymbol={airdropDetails.symbol}
+              hRate={airdropDetails.quote?.USD?.percent_change_24h}
+              dRate={airdropDetails.quote?.USD?.percent_change_7d}
+              hRateIsIncrement={(airdropDetails.quote?.USD?.percent_change_24h ?? 0) > 0}
+              dRateIsIncrement={(airdropDetails.quote?.USD?.percent_change_7d ?? 0) > 0}
+              price={airdropDetails.quote?.USD?.price}
+              marketCapValue={airdropDetails.quote?.USD?.market_cap}
+              volumeCryptoValue={airdropDetails.quote?.USD?.volume_24h}
+              volumeValue={airdropDetails.total_supply}
+              circulatingSupply={airdropDetails.circulating_supply}
+            />
+            ))
           )
+
           : (
             <tr>
               <td colSpan={9}>No data available</td>
             </tr>
           )}
-        </tbody>
       </table>
     </div>
   );

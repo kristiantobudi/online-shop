@@ -2,14 +2,11 @@ import { CryptocurrencyListingsLatest } from "../../../../app/utilities/network/
 import { axiosInstance } from "../../../../app/utilities/network/network"
 
 export const getListingsLatest = async () => {
-    return axiosInstance.get(`${CryptocurrencyListingsLatest}/listings/latest`)
+    return axiosInstance.get(`${CryptocurrencyListingsLatest}/listings/latest`);
 }
 
 export const getCryptocurrencyAirdropById = async (id: string) => {
     return axiosInstance.get(`${CryptocurrencyListingsLatest}/airdrop/${id}`, {
-        params: {
-            cryptocurrency_id: true
-        }
     })
 }
 

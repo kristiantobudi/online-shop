@@ -1,6 +1,6 @@
 export type TableType = 
   {
-    id?: any // Unique identifier
+    id?: any
     name?: string
     symbol?: string
     slug?: string
@@ -12,7 +12,7 @@ export type TableType =
     max_supply?: number
     infinite_supply?: boolean
     last_updated?: string
-    date_added?: string // Date-time format
+    date_added?: string
     tags?: string[]
     platform?: object | null
     self_reported_circulating_supply?: number | null
@@ -28,7 +28,7 @@ export type TableType =
         market_cap?: number
         market_cap_dominance?: number
         fully_diluted_market_cap?: number
-        last_updated?: string // Date-time format
+        last_updated?: string
       }
     }
 }

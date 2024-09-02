@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { Star } from "../../../../../public/assets/svg/star";
 import { CoinNameRow } from "./CoinNameRow";
-import { Rate } from "../../../../../public/assets/svg/rate";
+import { Rate } from "./rate";
 import Image from "next/image";
 import { More } from "../../../../../public/assets/svg/more";
 
@@ -78,25 +78,25 @@ export const TableRow: React.FC<CMCtableRowProps> = ({
                 </td>
                 <td>{starNum}</td>
                 {coinIcon && (
-                    <td className="cursor-pointer">
+                    <td className="px-2.5 xl:px-5 cursor-pointer">
                         <CoinNameRow name={coinName} icon={coinIcon} clicked={viewCoinDetails} />
                     </td>
                 )}
-                <td className="cursor-pointer" onClick={viewPrice}>
+                <td className="cursor-pointer px-2.5 xl:px-5" onClick={viewPrice}>
                     <p>${formatNumber(price)}</p>
                 </td>
-                <td>
+                <td className="px-2.5">
                     <Rate isIncrement={hRateIsIncrement} rate={`${formatNumber(hRate)}%`} />
                 </td>
-                <td>
+                <td  className="px-2.5">
                     <Rate isIncrement={dRateIsIncrement} rate={`${formatNumber(dRate)}%`} />
                 </td>
-                <td>
+                <td  className="px-2.5">
                     <div>
                         <p>${formatNumber(marketCapValue)}</p>
                     </div>
                 </td>
-                <td>
+                <td  className="px-2.5">
                     <div>
                         <p>{formatNumber(volumeValue)}</p>
                         <p className='text-gray-400'>
@@ -104,12 +104,12 @@ export const TableRow: React.FC<CMCtableRowProps> = ({
                         </p>
                     </div>
                 </td>
-                <td>
+                <td  className="px-2.5">
                     <div>
                         <p>{formatNumber(circulatingSupply)}</p>
                     </div>
                 </td>
-                <td>
+                <td  className="px-2.5">
                     <Image src={getRandomGraph()} width={150} height={60} alt='' />
                 </td>
                 <td>
