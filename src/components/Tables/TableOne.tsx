@@ -45,7 +45,7 @@ const TableOne = () => {
           </tr>
         </thead>
           {airdropDetails && Array.isArray(airdropDetails) ? (
-            airdropDetails.map((airdropDetails: any, key: number) => (
+            airdropDetails.slice(0, 10).map((airdropDetails: any, key: number) => (
               <TableRow 
               key={key}
               starNum={airdropDetails.cmc_rank}
